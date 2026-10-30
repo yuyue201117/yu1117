@@ -1,0 +1,93 @@
+const memberData = {
+  karina: {
+    label: "MEMBER PROFILE / 01",
+    name: "KARINA",
+    birthday: "2000 年 4 月 11 日",
+  },
+  giselle: {
+    label: "MEMBER PROFILE / 02",
+    name: "GISELLE",
+    birthday: "2000 年 10 月 30 日",
+  },
+  winter: {
+    label: "MEMBER PROFILE / 03",
+    name: "WINTER",
+    birthday: "2001 年 1 月 1 日",
+    
+  },
+  ningning: {
+    label: "MEMBER PROFILE / 04",
+    name: "NINGNING",
+    birthday: "2002 年 10 月 23 日",
+  }
+};
+
+const memberButtons = document.querySelectorAll(".member-card");
+const detail = {
+  label: document.getElementById("memberLabel"),
+  name: document.getElementById("memberDetailName"),
+  birthday: document.getElementById("memberBirthday"),
+};
+
+memberButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    const member = memberData[button.dataset.member];
+    if (!member) return;
+
+    memberButtons.forEach((item) => {
+      item.classList.remove("selected");
+      item.setAttribute("aria-pressed", "false");
+    });
+    button.classList.add("selected");
+    button.setAttribute("aria-pressed", "true");
+
+    detail.label.textContent = member.label;
+    detail.name.textContent = member.name;
+    detail.birthday.textContent = member.birthday;
+  });
+});
+
+const filterButtons = document.querySelectorAll(".filter-chip");
+const albumCards = document.querySelectorAll(".album-card");
+
+filterButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    filterButtons.forEach((item) => item.classList.remove("active"));
+    button.classList.add("active");
+
+    const filter = button.dataset.filter;
+    albumCards.forEach((card) => {
+      card.hidden = filter !== "all" && card.dataset.type !== filter;
+    });
+  });
+});
+
+const menuToggle = document.getElementById("menuToggle");
+const mainNav = document.getElementById("mainNav");
+
+menuToggle.addEventListener("click", () => {
+  const isOpen = mainNav.classList.toggle("open");
+  menuToggle.setAttribute("aria-expanded", String(isOpen));
+  menuToggle.setAttribute("aria-label", isOpen ? "關閉導覽選單" : "開啟導覽選單");
+});
+
+document.querySelectorAll(".nav-link").forEach((link) => {
+  link.addEventListener("click", () => {
+    mainNav.classList.remove("open");
+    menuToggle.setAttribute("aria-expanded", "false");
+  });
+});
+
+const sections = document.querySelectorAll("main section[id]");
+const navLinks = document.querySelectorAll(".nav-link");
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      navLinks.forEach((link) => {
+        link.classList.toggle("active", link.getAttribute("href") === `#${entry.target.id}`);
+      });
+    }
+  });
+}, { rootMargin: "-35% 0px -55% 0px" });
+
+sections.forEach((section) => observer.observe(section));
