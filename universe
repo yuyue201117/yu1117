@@ -1,0 +1,35 @@
+aespa UNIVERSE｜GitHub Pages 網站
+
+【檔案】
+index.html：網站內容與頁面結構
+style.css：紫黑科技風、卡片、動畫與手機版排版
+script.js：成員資料切換、專輯分類篩選、手機導覽列
+README.txt：本教學
+
+【先在電腦預覽】
+1. 將 ZIP 解壓縮。
+2. 打開 aespa_universe_site 資料夾。
+3. 連按兩下 index.html，用瀏覽器開啟。
+4. 測試上方導覽、專輯分類按鈕、成員卡片和外部連結。
+   網站主視覺使用 CSS 製作，不需要先下載圖片。
+
+【發布到 GitHub Pages】
+1. 登入 GitHub，建立一個新的 Repository。
+2. Repository 名稱可使用 aespa-universe。
+3. 選擇 Public，建立 Repository。
+4. 在 Repository 頁面按 Add file → Upload files。
+5. 上傳 index.html、style.css、script.js、README.txt（上傳檔案本身，不要只上傳外層資料夾）。
+6. 按 Commit changes。
+7. 開啟 Settings → Pages。
+8. 在 Build and deployment 中，Source 選 Deploy from a branch。
+9. Branch 選 main，資料夾選 /(root)，按 Save。
+10. 等待一至數分鐘，重新整理 Pages 設定頁，會顯示網站網址。
+
+【修改網站】
+- 修改文字：編輯 index.html。
+- 修改顏色、大小、排版：編輯 style.css。
+- 修改成員卡片點擊後顯示的資料：編輯 script.js。
+- 每次修改後存檔，再上傳相同檔名並提交變更；或直接在 GitHub 點進檔案按鉛筆圖示編輯。
+
+【圖片與版權提醒】
+目前成員卡片和專輯封面是原創 CSS 風格的視覺佔位設計，並非官方照片或真實專輯封面。若要放入圖片，請使用自己有權使用的圖片，並注意圖片授權；也可以連結到官方網站或官方影片。此網站為非官方粉絲介紹網站。
